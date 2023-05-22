@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/weather")
-public class Controller {
+public class WeatherController {
     private final WeatherService weatherService;
 
     @Autowired
-    public Controller(WeatherService weatherService) {
+    public WeatherController(WeatherService weatherService) {
         this.weatherService = weatherService;
     }
 
     @GetMapping("/{city}")
     public WeatherData getWeather(@PathVariable String city) {
-        return weatherService.getWeatherData(city);
+        WeatherData weatherData = weatherService.getWeatherData(city);
+        System.out.println("City: " + weatherData.getLocation().getName());
+        System.out.println("Temperature: " + weatherData.getCurrent().getTemp_c());
+        System.out.println("Description: " + weatherData.getCurrent().getCondition().getText());
+        return weatherData;
     }
 }

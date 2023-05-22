@@ -4,35 +4,81 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @ToString
 public class WeatherData {
-    private String city;
-    private double temperature;
-    private String description;
+    private LocationData location;
+    private CurrentData current;
 
-    public String getCity() {
-        return city;
+    // Getters and setters
+
+
+    public LocationData getLocation() {
+        return location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(LocationData location) {
+        this.location = location;
     }
 
-    public double getTemperature() {
-        return temperature;
+    public CurrentData getCurrent() {
+        return current;
     }
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
+    public void setCurrent(CurrentData current) {
+        this.current = current;
     }
 
-    public String getDescription() {
-        return description;
+    public static class LocationData {
+        private String name;
+
+        // Getters and setters
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public static class CurrentData {
+        private double temp_c;
+        private ConditionData condition;
+
+        // Getters and setters
+
+        public double getTemp_c() {
+            return temp_c;
+        }
+
+        public void setTemp_c(double temp_c) {
+            this.temp_c = temp_c;
+        }
+
+        public ConditionData getCondition() {
+            return condition;
+        }
+
+        public void setCondition(ConditionData condition) {
+            this.condition = condition;
+        }
     }
+
+    public static class ConditionData {
+        private String text;
+
+        // Getters and setters
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
+    }
+    
 }

@@ -3,38 +3,113 @@ package com.weather.api.weather_project.entity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.hibernate.mapping.List;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class Forecast {
-    private String city;
-    private double temperature;
-    private String description;
+    private Location location;
+    private List forecast;
 
-    public String getCity() {
-        return city;
+    // Getters and setters
+
+
+    public Location getLocation() {
+        return location;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
-    public double getTemperature() {
-        return temperature;
+    public List getForecast() {
+        return forecast;
     }
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
+    public void setForecast(List forecast) {
+        this.forecast = forecast;
     }
 
-    public String getDescription() {
-        return description;
+    public class Location {
+        private String name;
+        // Other fields, getters, and setters
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public class ForecastDay {
+        private String date;
+        private Day day;
+        // Other fields, getters, and setters
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+        public Day getDay() {
+            return day;
+        }
+
+        public void setDay(Day day) {
+            this.day = day;
+        }
+    }
+
+    public class Day {
+        private double maxtemp_c;
+        private double mintemp_c;
+        private Condition condition;
+        // Other fields, getters, and setters
+
+        public double getMaxtemp_c() {
+            return maxtemp_c;
+        }
+
+        public void setMaxtemp_c(double maxtemp_c) {
+            this.maxtemp_c = maxtemp_c;
+        }
+
+        public double getMintemp_c() {
+            return mintemp_c;
+        }
+
+        public void setMintemp_c(double mintemp_c) {
+            this.mintemp_c = mintemp_c;
+        }
+
+        public Condition getCondition() {
+            return condition;
+        }
+
+        public void setCondition(Condition condition) {
+            this.condition = condition;
+        }
+    }
+
+    public class Condition {
+        private String text;
+        // Other fields, getters, and setters
+
+        public String getText() {
+            return text;
+        }
+
+        public void setText(String text) {
+            this.text = text;
+        }
     }
 
 }
+
