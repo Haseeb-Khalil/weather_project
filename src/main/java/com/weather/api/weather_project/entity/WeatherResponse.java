@@ -1,31 +1,25 @@
 package com.weather.api.weather_project.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
-
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 public class WeatherResponse {
-    private LocationData location;
-    private CurrentData current;
+    private WeatherData.LocationData location;
+    private WeatherData.CurrentData current;
 
-    public LocationData getLocation() {
+    // Getters and setters
+
+    public WeatherData.LocationData getLocation() {
         return location;
     }
 
-    public void setLocation(LocationData location) {
+    public void setLocation(WeatherData.LocationData location) {
         this.location = location;
     }
 
-    public CurrentData getCurrent() {
+    public WeatherData.CurrentData getCurrent() {
         return current;
     }
 
-    public void setCurrent(CurrentData current) {
+    public void setCurrent(WeatherData.CurrentData current) {
         this.current = current;
     }
-
-
 }
+
