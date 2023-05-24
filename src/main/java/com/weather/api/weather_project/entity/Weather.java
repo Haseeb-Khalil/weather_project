@@ -7,7 +7,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class WeatherData {
+public class Weather {
     private LocationData location;
     private CurrentData current;
 
@@ -80,5 +80,5 @@ public class WeatherData {
             this.text = text;
         }
     }
-    
+
 }

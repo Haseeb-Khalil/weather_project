@@ -19,8 +19,21 @@ public class ForecastController {
     }
 
     @GetMapping("/{city}/{days}")
-    public Forecast getWeatherForecast(@PathVariable String city, @PathVariable String days) {
-        return forecastService.getWeatherForecastData(city, days);
+    public Forecast getWeatherForecastData(@PathVariable String city, @PathVariable String days) {
+        Forecast forecast = forecastService.getWeatherForecastData(city, days);
+
+        // Print the forecast result
+        System.out.println("Location: " + forecast.getLocation().getName());
+        System.out.println("Forecast:");
+        for (Forecast.ForecastDay forecastDay : forecast.getForecast().getForecastday()) {
+            System.out.println("Date: " + forecastDay.getDate());
+            System.out.println("Max Temp: " + forecastDay.getDay().getMaxtemp_c());
+            System.out.println("Min Temp: " + forecastDay.getDay().getMintemp_c());
+            System.out.println("Condition: " + forecastDay.getDay().getCondition().getText());
+            System.out.println();
+        }
+
+        return forecast;
     }
 }
 

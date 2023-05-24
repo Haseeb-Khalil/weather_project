@@ -3,7 +3,8 @@ package com.weather.api.weather_project.entity;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.mapping.List;
+import java.util.List;
+
 
 
 @AllArgsConstructor
@@ -11,10 +12,9 @@ import org.hibernate.mapping.List;
 @ToString
 public class Forecast {
     private Location location;
-    private List forecast;
+    private ForecastData forecast;
 
     // Getters and setters
-
 
     public Location getLocation() {
         return location;
@@ -24,15 +24,15 @@ public class Forecast {
         this.location = location;
     }
 
-    public List getForecast() {
+    public ForecastData getForecast() {
         return forecast;
     }
 
-    public void setForecast(List forecast) {
+    public void setForecast(ForecastData forecast) {
         this.forecast = forecast;
     }
 
-    public class Location {
+    public static class Location {
         private String name;
         // Other fields, getters, and setters
 
@@ -45,7 +45,20 @@ public class Forecast {
         }
     }
 
-    public class ForecastDay {
+    public static class ForecastData {
+        private List<ForecastDay> forecastday;
+        // Other fields, getters, and setters
+
+        public List<ForecastDay> getForecastday() {
+            return forecastday;
+        }
+
+        public void setForecastday(List<ForecastDay> forecastday) {
+            this.forecastday = forecastday;
+        }
+    }
+
+    public static class ForecastDay {
         private String date;
         private Day day;
         // Other fields, getters, and setters
@@ -67,7 +80,7 @@ public class Forecast {
         }
     }
 
-    public class Day {
+    public static class Day {
         private double maxtemp_c;
         private double mintemp_c;
         private Condition condition;
@@ -98,7 +111,7 @@ public class Forecast {
         }
     }
 
-    public class Condition {
+    public static class Condition {
         private String text;
         // Other fields, getters, and setters
 
@@ -110,6 +123,7 @@ public class Forecast {
             this.text = text;
         }
     }
-
 }
+
+
 
