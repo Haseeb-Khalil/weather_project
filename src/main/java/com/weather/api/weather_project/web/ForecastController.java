@@ -3,7 +3,6 @@ package com.weather.api.weather_project.web;
 import com.weather.api.weather_project.entity.Forecast;
 import com.weather.api.weather_project.service.ForecastService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
