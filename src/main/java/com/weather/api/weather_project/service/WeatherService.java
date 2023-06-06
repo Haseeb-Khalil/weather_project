@@ -1,6 +1,8 @@
 package com.weather.api.weather_project.service;
 
 import com.weather.api.weather_project.entity.Weather;
+import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
+import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -8,29 +10,16 @@ import org.springframework.web.client.RestTemplate;
 public class WeatherService {
     private static final String WEATHER_URL = "https://api.weatherapi.com/v1/current.json?key=78936007682e4b1e9c1112312223105&q=%s";
 
+    private final RestTemplate restTemplate;
+
+    public WeatherService(Jackson2ObjectMapperBuilder objectMapperBuilder) {
+        this.restTemplate = new RestTemplate();
+        this.restTemplate.getMessageConverters().add(0, new MappingJackson2HttpMessageConverter(objectMapperBuilder.build()));
+    }
+
     public Weather getWeatherData(String city) {
         String apiUrl = String.format(WEATHER_URL, city);
-        RestTemplate restTemplate = new RestTemplate();
-        Weather jsonResponse = restTemplate.getForObject(apiUrl, Weather.class);
-        return mapToWeatherData(jsonResponse);
+        return restTemplate.getForObject(apiUrl, Weather.class);
     }
 
-    private Weather mapToWeatherData(Weather weatherResponse) {
-        Weather weather = new Weather();
-
-        Weather.LocationData location = new Weather.LocationData();
-        location.setName(weatherResponse.getLocation().getName());
-        weather.setLocation(location);
-
-        Weather.CurrentData current = new Weather.CurrentData();
-        current.setTemp_c(weatherResponse.getCurrent().getTemp_c());
-
-        Weather.ConditionData condition = new Weather.ConditionData();
-        condition.setText(weatherResponse.getCurrent().getCondition().getText());
-        current.setCondition(condition);
-
-        weather.setCurrent(current);
-
-        return weather;
-    }
 }
