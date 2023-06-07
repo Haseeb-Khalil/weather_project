@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h2 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #777;
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+<h1>Weather for <span th:text="${weather.location.name}"></span></h1>
+<h2>Current Weather:</h2>
+<p>Temperature: <span th:text="${weather.current.temp_c}"></span>°C</p>
+<p>Condition: <span th:text="${weather.current.condition.text}"></span></p>
+</body>
+</html>
