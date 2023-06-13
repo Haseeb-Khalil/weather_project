@@ -30,6 +30,7 @@ public class ForecastController {
 
         return modelAndView;
     }
+
 }
 
 
