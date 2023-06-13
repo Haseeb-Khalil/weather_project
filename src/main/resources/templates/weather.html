@@ -13,24 +13,40 @@
 
         h1 {
             color: #333;
+            font-size: 24px;
+            margin-bottom: 20px;
         }
 
         h2 {
             color: #666;
+            font-size: 18px;
             margin-bottom: 10px;
         }
 
         p {
             color: #777;
             margin-bottom: 5px;
+            font-size: 14px;
         }
 
+        .weather-icon {
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body>
 <h1>Weather for <span th:text="${weather.location.name}"></span></h1>
 <h2>Current Weather:</h2>
 <p>Temperature: <span th:text="${weather.current.temp_c}"></span>°C</p>
+<p>Wind Speed: <span th:text="${weather.current.wind_speed}"></span>mph</p>
+<p>Humidity: <span th:text="${weather.current.humidity}"></span>%</p>
 <p>Condition: <span th:text="${weather.current.condition.text}"></span></p>
+<div class="weather-icon-container">
+    <img class="weather-icon" th:src="@{${weather.current.condition.image}}" alt="Weather Icon" width="100" height="100">
+</div>
 </body>
 </html>

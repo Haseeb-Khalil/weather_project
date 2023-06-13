@@ -21,3 +21,7 @@ public record Forecast(@JsonProperty("location") Location location, @JsonPropert
         }
     }
 }
+
+/**
+ * 
+ */
